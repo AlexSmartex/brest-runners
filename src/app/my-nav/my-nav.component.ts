@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { Router, ActivatedRoute } from '@angular/router';
-
 
 enum MenuItemTitle {
   HOME = 'Home',
@@ -15,11 +15,11 @@ enum MenuItemTitle {
 }
 enum MenuItemLink {
   HOME = 'home',
-  CREATE_COUNTER = 'createCounter',
-  CREATE_RUNNER = 'createRunner',
-  COUNTER_LIST = 'listOfCounters',
-  RUNNER_LIST = 'listOfRunner',
-  RUNNERS_RESULT = 'runnersResult',
+  CREATE_COUNTER = 'create-counter',
+  CREATE_RUNNER = 'create-runner',
+  COUNTER_LIST = 'counter-list',
+  RUNNER_LIST = 'runner-list',
+  RUNNERS_RESULT = 'runners-result',
 }
 interface MenuItem {
   title: MenuItemTitle;
@@ -54,7 +54,7 @@ export class MyNavComponent implements OnInit {
 
   public selectItem(item: MenuItem) {
     this.currentItem = item;
-    this.router.navigate(['./'], { queryParams: { page: this.currentItem.link }, relativeTo: this.activatedRoute, queryParamsHandling: 'merge' });
+    this.router.navigate([`./${this.currentItem.link}`]);
   }
 
   private initTabs() {
