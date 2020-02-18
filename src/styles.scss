@@ -1,12 +1,42 @@
-$color-background-main: #fafafa;
+$color-background: #fafafa;
+$color-primary: #37ac00;
+$color-primary-select: #65d132;
+$color-grey: #7a7a7a;
+$color-grey-light: #e5e5e5;
+
+@mixin hidePlaceholderOnFocus {
+  &:focus {
+    &::-webkit-input-placeholder {
+      color: transparent;
+    }
+    &:focus:-moz-placeholder {
+      color: transparent;
+    }
+    &:focus::-moz-placeholder {
+      color: transparent;
+    }
+
+    &:focus:-ms-input-placeholder {
+      color: transparent;
+    }
+  }
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
 
 html,
 body {
   height: 100%;
   width: 100%;
 }
+
 body {
-  margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   box-sizing: border-box;
 }
@@ -37,4 +67,9 @@ button {
 h2,
 h3 {
   text-transform: uppercase;
+}
+
+input {
+  outline: 0;
+  border: 0;
 }
