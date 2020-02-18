@@ -7,17 +7,34 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { CountersRunnerPageComponent } from './counters-runner-page/counters-runner-page.component';
 import { RunnerComponent } from './counters-runner-page/runner/runner.component';
+import { CreateCountersComponent } from './pages/create-counters/create-counters.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { MyNavComponent } from './my-nav/my-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     CountersRunnerPageComponent,
-    RunnerComponent
+    RunnerComponent,
+    CreateCountersComponent,
+    MyNavComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    BrowserAnimationsModule,
+    LayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
