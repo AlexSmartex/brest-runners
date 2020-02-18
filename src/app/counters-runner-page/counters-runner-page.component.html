@@ -1,0 +1,12 @@
+<ul class="counters-runner-list">
+  <li class="counters-runner-list-item" *ngFor="let runner of runners">
+    <app-runner
+      [runner]="runner"
+      []
+      (touchstart)="onTouch(runner)"
+      (mousedown)="onTouch(runner)"
+    >
+      {{ runner }}
+    </app-runner>
+  </li>
+</ul>
