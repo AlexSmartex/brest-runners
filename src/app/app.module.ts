@@ -16,6 +16,7 @@ import { CreateRunnerComponent } from './pages/create-runner/create-runner.compo
 import { CounterListComponent } from './pages/counter-list/counter-list.component';
 import { RunnerListComponent } from './pages/runner-list/runner-list.component';
 import { RunnerResultComponent } from './pages/runner-result/runner-result.component';
+import { AssignedRunnersComponent } from './pages/assigned-runners/assigned-runners.component';
 import { AssignedRunnersListComponent } from './assigned-runners-list/assigned-runners-list.component';
 import { AssignedRunnerComponent } from './assigned-runners-list/assigned-runner/assigned-runner.component';
 
@@ -30,6 +31,7 @@ import { AssignedRunnerComponent } from './assigned-runners-list/assigned-runner
     CounterListComponent,
     RunnerListComponent,
     RunnerResultComponent,
+    AssignedRunnersComponent,
     AssignedRunnersListComponent,
     AssignedRunnerComponent,
   ],
