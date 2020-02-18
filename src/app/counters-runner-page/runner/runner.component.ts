@@ -13,20 +13,20 @@ export class RunnerComponent implements OnInit {
   public currentLap = 1;
   public lastTouch = 0;
 
-  onTouch(runner) {
-    if (Date.now() - this.lastTouch > 3e5) {
-      const dataToSend = {
-        runnerId: runner.id,
-        currentTime: Date.now(),
-        lap: this.currentLap
-      };
+  onTouch() {
+    if (Date.now() - this.lastTouch > 3e5) { return; }
 
-      // send data
+    const dataToSend = {
+      runnerId: this.runner.id,
+      // change to raceStart - Date.now() for first lap later on
+      lapTime: this.lastTouch - Date.now(),
+      lap: this.currentLap,
+    };
 
-      this.currentLap += 1;
+    this.lastTouch = Date.now();
+    this.currentLap += 1;
 
-      this.lastTouch = Date.now();
-    }
+    // send data
   }
 
   ngOnInit() {
