@@ -1,4 +1,13 @@
+$color-background-main: #fafafa;
+
+html,
 body {
+  height: 100%;
+  width: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   box-sizing: border-box;
 }
 
@@ -25,5 +34,7 @@ button {
   }
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+h2,
+h3 {
+  text-transform: uppercase;
+}
