@@ -12,6 +12,14 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./layouts/admin/admin.module').then(m => m.AdminModule),
+  },
+  {
+    path: 'referee',
+    loadChildren: () => import('./layouts/referee/referee.module').then(m => m.RefereeModule),
   }
 ];
 

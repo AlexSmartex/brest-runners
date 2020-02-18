@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { RefereeComponent } from './referee.component';
-import { RunnersComponent } from 'src/app/pages/runners/runners.component';
+import { RefereeRouteModule } from './referee-route.module';
 
 
 
 @NgModule({
   declarations: [
     RefereeComponent,
-    RunnersComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RefereeRouteModule,
   ]
 })
 export class RefereeModule { }
