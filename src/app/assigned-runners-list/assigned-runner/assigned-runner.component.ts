@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-runner',
-  templateUrl: './runner.component.html',
-  styleUrls: ['./runner.component.scss']
+  selector: 'app-assigned-runner',
+  templateUrl: './assigned-runner.component.html',
+  styleUrls: ['./assigned-runner.component.scss']
 })
-export class RunnerComponent implements OnInit {
+export class AssignedRunnerComponent implements OnInit {
   @Input() public runner;
 
   constructor() { }
