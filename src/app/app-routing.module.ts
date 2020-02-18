@@ -7,6 +7,7 @@ import { CreateRunnerComponent } from './pages/create-runner/create-runner.compo
 import { CounterListComponent } from './pages/counter-list/counter-list.component';
 import { RunnerListComponent } from './pages/runner-list/runner-list.component';
 import { RunnerResultComponent } from './pages/runner-result/runner-result.component';
+import { AssignedRunnersComponent } from './pages/assigned-runners/assigned-runners.component';
 
 
 const routes: Routes = [
@@ -38,7 +39,11 @@ const routes: Routes = [
   {
     path: 'runners-result',
     component: RunnerResultComponent
-  }
+  },
+  {
+    path: 'assigned-runners',
+    component: AssignedRunnersComponent
+  },
 ];
 
 @NgModule({
