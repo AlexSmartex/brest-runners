@@ -22,6 +22,7 @@
     "@angular/pwa": "^0.900.2",
     "@angular/router": "~8.2.14",
     "@angular/service-worker": "~8.2.14",
+    "firebase": "^7.8.2",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "rxjs": "~6.4.0",
