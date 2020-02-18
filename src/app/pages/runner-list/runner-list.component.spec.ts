@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CountersRunnerPageComponent } from './counters-runner-page.component';
+import { RunnerListComponent } from './runner-list.component';
 
-describe('CountersRunnerPageComponent', () => {
-  let component: CountersRunnerPageComponent;
-  let fixture: ComponentFixture<CountersRunnerPageComponent>;
+describe('RunnerListComponent', () => {
+  let component: RunnerListComponent;
+  let fixture: ComponentFixture<RunnerListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CountersRunnerPageComponent ]
+      declarations: [ RunnerListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CountersRunnerPageComponent);
+    fixture = TestBed.createComponent(RunnerListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
