@@ -1,1 +1,5 @@
-<p>header works!</p>
+<div class="container">
+  <a *ngFor="let tab of tabs"
+    [ngClass]="tab.title === currentTab.title ? 'isActive' : 'isNotActive'"
+    (click)="selectTab(tab)">{{tab.title}}</a>
+</div>
