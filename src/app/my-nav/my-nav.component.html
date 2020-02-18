@@ -5,7 +5,7 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a *ngFor="let item of menuItems" mat-list-item href="#" (click)="selectItem(item)">{{item.title}}</a>
+      <a *ngFor="let item of menuItems" mat-list-item (click)="selectItem(item)">{{item.title}}</a>
       <!-- <a mat-list-item href="#">Home</a>
       <a mat-list-item href="#">Create counter</a>
       <a mat-list-item href="#">Create runner</a>
@@ -27,5 +27,6 @@
       <span>brest-runners</span>
     </mat-toolbar>
     <!-- Add Content Here -->
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
