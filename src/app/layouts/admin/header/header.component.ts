@@ -61,5 +61,7 @@ export class HeaderComponent implements OnInit {
         link: WizardTabLink.RESULTS
       }
     ];
+
+    this.selectTab(this.currentTab);
   }
 }
