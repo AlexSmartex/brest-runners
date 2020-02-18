@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class CountersRunnerPageComponent implements OnInit {
   constructor() { }
 
-  runners = []
+  public runners = [];
 
   ngOnInit() {
   }

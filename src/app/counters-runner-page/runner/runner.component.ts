@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-runner',
@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./runner.component.scss']
 })
 export class RunnerComponent implements OnInit {
+  @Input() public runner;
+
   constructor() { }
 
-  currentLap = 1;
-  lastTouch = 0;
+  public currentLap = 1;
+  public lastTouch = 0;
 
   onTouch(runner) {
     if (Date.now() - this.lastTouch > 3e5) {
@@ -17,11 +19,11 @@ export class RunnerComponent implements OnInit {
         runnerId: runner.id,
         currentTime: Date.now(),
         lap: this.currentLap
-      }
+      };
 
-      //send data
+      // send data
 
-      this.currentLap += 1
+      this.currentLap += 1;
 
       this.lastTouch = Date.now();
     }
