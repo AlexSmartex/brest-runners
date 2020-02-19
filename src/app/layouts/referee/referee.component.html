@@ -1,9 +1,10 @@
-<nav class="referee-nav">
-  <h3>Runners</h3><a [routerLink]="['/login']" class="referee-logout-button">Выйти</a>
-</nav>
+<header class="referee-header">
+  <h3>Runners</h3>
+  <a [routerLink]="['/login']" class="referee-logout-button">Выйти</a>
+</header>
 
-<!-- ngIf runners.length === 0 -->
-<!-- <h2 class="referee-empty-list-placeholder">Нет текущих забегов</h2> -->
+<h2 *ngIf="!runners?.length" class="referee-empty-list-placeholder">
+  Нет текущих забегов
+</h2>
 
-<app-referees-runner-card></app-referees-runner-card>
-<app-referees-runner-card></app-referees-runner-card>
+<app-referees-runner-card *ngFor="let runner of runners" [id]="runner.id"></app-referees-runner-card>

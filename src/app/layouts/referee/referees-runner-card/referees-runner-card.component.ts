@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-referees-runner-card',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./referees-runner-card.component.scss']
 })
 export class RefereesRunnerCardComponent implements OnInit {
+  @Input() id;
 
   constructor() { }
 

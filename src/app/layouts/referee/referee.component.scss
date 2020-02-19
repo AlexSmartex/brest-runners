@@ -8,10 +8,10 @@
   width: 100%;
   height: 100%;
 
-  background-color: red
+  background-color: $color-background;
 }
 
-.referee-nav {
+.referee-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,3 +36,4 @@
     color: $color-primary-select;
   }
 }
+
