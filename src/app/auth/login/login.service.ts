@@ -53,7 +53,7 @@ export class LoginService {
           return;
         }
 
-        if (loginnedUser.password === data.password) {
+        if (loginnedUser.password === data.password && loginnedUser.login !== 'admin') {
           const users = this.db
             .list('referies')
             .snapshotChanges()
@@ -66,6 +66,8 @@ export class LoginService {
 
               this.router.navigate(['referee'], { queryParams });
             });
+        } else if (loginnedUser.password === data.password && loginnedUser.login === 'admin') {
+          this.router.navigate(['admin']);
         }
       });
   }
