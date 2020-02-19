@@ -5,9 +5,9 @@ enum WizardTableHeader {
   PLACE = 'Место',
   ID = 'Номер',
   NAME = 'Имя',
-  LAPS = 'Кругов',
-  LAST_LAP_TIME = 'Время последнего круга',
   PACE = 'Темп',
+  LAST_LAP_TIME = 'Время последнего круга',
+  LAPS = 'Кругов',
   DISTANCE = 'Расстояние',
 }
 
