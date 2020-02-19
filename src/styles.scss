@@ -1,6 +1,7 @@
 $color-background: #fafafa;
 $color-primary: #37ac00;
 $color-primary-select: #65d132;
+$color-inactive: #c9c9c9;
 $color-grey: #7a7a7a;
 $color-grey-light: #e5e5e5;
 
@@ -67,10 +68,17 @@ button {
 
 h2,
 h3 {
+  font-weight: bold;
   text-transform: uppercase;
 }
 
 input {
   outline: 0;
   border: 0;
+}
+
+.cross-icon {
+  font-weight: bold;
+  font-size: 36px;
+  text-align: center;
 }
