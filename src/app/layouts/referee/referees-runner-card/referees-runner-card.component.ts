@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-referees-runner-card',
@@ -6,11 +6,23 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./referees-runner-card.component.scss']
 })
 export class RefereesRunnerCardComponent implements OnInit {
-  @Input() id;
+  public data: any;
+
+  @Input() public set runner(value: any) {
+    this.data = value;
+  }
+
+  @Output() public setLaps: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public handleAddLaps() {
+    ++this.data.laps;
+
+    this.setLaps.emit(this.data);
   }
 
 }

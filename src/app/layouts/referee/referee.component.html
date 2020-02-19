@@ -7,4 +7,8 @@
   Нет текущих забегов
 </h2>
 
-<app-referees-runner-card *ngFor="let runner of runners" [id]="runner.id"></app-referees-runner-card>
+<app-referees-runner-card
+  *ngFor="let runner of filteredRunners"
+  (setLaps)="handleAddLaps($event)"
+  [runner]="runner">
+</app-referees-runner-card>

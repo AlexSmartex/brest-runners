@@ -1,8 +1,8 @@
 <h2>Runners</h2>
-<form action="#">
-  <input type="text" class="auth-form-field" placeholder="Логин">
-  <input type="password" class="auth-form-field" placeholder="Пароль">
-  <input type="submit" class="auth-form-button" value="Войти">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+  <input type="text" class="auth-form-field" formControlName="login" [placeholder]="loginPlaceholder" required>
+  <input type="password" class="auth-form-field" formControlName="password" [placeholder]="passwordPlaceholder" required>
+  <input type="submit" class="auth-form-button" [value]="submitValue">
 </form>
 
 <!-- <button (click)="handleClick()">Go next page</button> -->

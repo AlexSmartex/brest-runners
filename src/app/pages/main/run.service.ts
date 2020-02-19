@@ -19,8 +19,4 @@ export class RunService {
         map(() => --this.counter)
       );
   }
-
-  public stopCount() {
-    
-  }
 }
