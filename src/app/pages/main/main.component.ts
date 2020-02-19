@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 
-import { timer } from 'rxjs';
-
-import * as moment from "moment";
+import * as moment from 'moment';
+import { RunService } from './run.service';
 
 interface StartTime {
   hour: number;
@@ -15,13 +14,24 @@ interface StartTime {
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent {
   public startTime: StartTime = { hour: 6, minute: 0, seconds: 0 };
-  public formattedTime = moment(this.startTime).format('hh:mm:ss');
+  public formattedStartTime = moment(this.startTime).format('hh:mm:ss');
+
+  @Input() public countDown: number;
+  @Input() public timeStarted: boolean;
+  @Input() public timeStopped: boolean;
+
+  @Output() public startRun: EventEmitter<boolean> = new EventEmitter();
+  @Output() public stopRun: EventEmitter<boolean> = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit() {
+  public handleStartCount(): void {
+    this.startRun.emit(true);
   }
 
+  public handleStopCount(): void {
+    this.stopRun.emit(true);
+  }
 }

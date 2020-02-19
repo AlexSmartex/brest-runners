@@ -16,7 +16,7 @@
             margin-bottom: 1.5rem;
         }
     
-        .start-btn {
+        .btn {
             display: block;
             font-size: 1.125rem;
             padding: 10px 20px;
@@ -30,6 +30,13 @@
                 opacity: 0.8;
                 transition: all 0.6;
             }
+        }
+
+        .start-btn {
+            background: #37AC00;
+        }
+        .stop-btn {
+            background: #FF3D3D;
         }
     }
 }

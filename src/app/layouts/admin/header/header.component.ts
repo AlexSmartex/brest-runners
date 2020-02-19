@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 
@@ -30,6 +30,8 @@ export class HeaderComponent implements OnInit {
     link: WizardTabLink.RUN
   };
 
+  @Output() public selectedTab: EventEmitter<WizardTabInfo> = new EventEmitter();
+
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute) { }
 
@@ -39,7 +41,8 @@ export class HeaderComponent implements OnInit {
 
   public selectTab(tab: WizardTabInfo) {
     this.currentTab = tab;
-    this.router.navigate([`./${this.currentTab.link}`], { relativeTo: this.activatedRoute, queryParamsHandling: 'merge' });
+
+    this.selectedTab.emit(tab);
   }
 
   private initTabs() {

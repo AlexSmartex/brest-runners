@@ -14,25 +14,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: AdminComponent,
-    children: [
-      {
-        path: 'run',
-        component: MainComponent,
-      },
-      {
-        path: 'referee-list',
-        component: RefereeListComponent,
-      },
-      {
-        path: 'runner-list',
-        component: RunnerListComponent,
-      },
-      {
-        path: 'results',
-        component: ResultsComponent,
-      },
-    ]
+    component: AdminComponent
   }
 ];
 
