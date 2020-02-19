@@ -1,0 +1,25 @@
+@import "../../../styles.scss";
+
+.referee-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: white;
+  height: 50px;
+  padding: 0 20px;
+}
+
+.referee-empty-list-placeholder {
+  margin-top: 40vh;
+  text-align: center;
+}
+
+.referee-logout-button {
+  color: $color-primary;
+  font-size: 18px;
+
+  &:hover {
+    color: $color-primary-select;
+  }
+}
