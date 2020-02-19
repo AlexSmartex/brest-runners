@@ -19,8 +19,8 @@
 
   & > tr > th {
     &:nth-child(2),
-    &:nth-child(4),
     &:nth-child(5),
+    &:nth-child(6),
     &:nth-child(7) {
       text-align: center;
     }
@@ -31,6 +31,7 @@
   background-color: white;
   border-radius: 5px;
   font-size: 14px;
+  min-height: 40px;
 
   &__column {
     padding: 12px 0;
@@ -41,7 +42,7 @@
       padding-left: 14px;
     }
     &:last-child {
-      border-radius: 0 5px 5px 0;
+      border-radius: 0 5px 5px 0 !important;
       padding-right: 14px;
     }
   }
@@ -58,26 +59,26 @@
   }
 
   &__name {
-    width: 210px;
+    width: 350px;
   }
 
   &__laps {
-    width: 45px;
+    width: 280px;
     padding-left: 10px;
     text-align: center;
   }
 
   &__last-lap-time {
-    width: 330px;
+    width: 170px;
     text-align: center;
   }
 
   &__pace {
-    width: 160px;
+    width: 200px;
   }
 
   &__distance {
-    width: 76px;
+    width: 100px;
     text-align: center;
   }
 }

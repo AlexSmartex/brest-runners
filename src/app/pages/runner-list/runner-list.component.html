@@ -1,1 +1,16 @@
-<p>runner-list works!</p>
+<button class="button-standard add-runner-button">Добавить Спортсмена</button>
+
+<table class="runner-table">
+  <tr>
+    <th *ngFor="let title of tableTitles">{{ title }}</th>
+  </tr>
+  <tr class="runner-card" *ngFor="let runner of runners">
+    <td class="runner-card__column runner-card__id">{{ runner.id }}</td>
+    <td class="runner-card__column runner-card__name">{{ runner.name }}</td>
+    <td class="runner-card__column runner-card__referee">
+      {{ runner.referee }}
+    </td>
+    <td class="runner-card__column runner-card__edit">Редактировать</td>
+    <td class="runner-card__column runner-card__delete">Удалить</td>
+  </tr>
+</table>
