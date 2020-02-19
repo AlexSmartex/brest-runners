@@ -2,17 +2,20 @@
   width: 100%;
   height: 100%;
   background: #E5E5E5;
+  display: flex;
+  flex-direction: column;
 
   .header {
     position: relative;
     width: 100%;
-    height: 91px;
+    height: 10%;
+    max-height: 91px;
     left: 0px;
     background: #FFFFFF;
   }
 
   .content {
     width: 100%;
-    padding: 0 50px;
+    height: 100%;
   }
 }

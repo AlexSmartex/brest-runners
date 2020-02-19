@@ -1,1 +1,13 @@
-<p>main works!</p>
+<div class="container">
+    <div class="content">
+        <div *ngIf="countDown else startTime" class="time">{{countDown | formatTime}}</div>
+        
+        <a *ngIf="!timeStarted && !timeStopped" (click)="handleStartCount()" class="btn start-btn">Начать забег</a>
+        <a *ngIf="timeStarted" (click)="handleStopCount()" class="btn stop-btn">Остановить</a>
+        <a *ngIf="timeStopped" (click)="handleStartCount()" class="btn start-btn">Продолжить</a>
+    </div>
+</div>
+
+<ng-template #startTime>
+    <div class="time">{{formattedStartTime}}</div>
+</ng-template>

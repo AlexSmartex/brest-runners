@@ -1,8 +1,23 @@
 <div class="container">
   <div class="header">
-    <app-header></app-header>
+    <app-header (selectedTab)="handleSelectedTab($event)"></app-header>
   </div>
   <div class="content">
-    <router-outlet></router-outlet>
+    <ng-container *ngIf="currentTab" class="tabs-content" [ngSwitch]="currentTab.title">
+      <app-main
+        *ngSwitchCase="TABS.RUN"
+        (startRun)="handleStartRun($event)"
+        (stopRun)="handleStopRun($event)"
+        [timeStarted]="timeStarted"
+        [timeStopped]="timeStopped"
+        [countDown]="countDown">
+      </app-main>
+
+      <app-referee-list *ngSwitchCase="TABS.REFERRIES"></app-referee-list>
+
+      <app-runner-list *ngSwitchCase="TABS.RUNNERS"></app-runner-list>
+
+      <app-results *ngSwitchCase="TABS.RESULTS"></app-results>
+    </ng-container>
   </div>
 </div>
