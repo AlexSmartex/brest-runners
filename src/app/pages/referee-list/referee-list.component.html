@@ -1,1 +1,20 @@
-<p>referee-list works!</p>
+<button class="button-standard add-referee-button">Добавить судью</button>
+
+<table class="referee-table">
+  <tr>
+    <th>Имя</th>
+    <th>Спортсмены</th>
+    <th>Логин</th>
+    <th>Пароль</th>
+  </tr>
+  <tr class="referee-card" *ngFor="let referee of referees">
+    <td class="referee-card__name">{{ referee.name }}</td>
+    <td class="referee-card__runners">
+      <span *ngFor="let runner of referee.runners">#{{ runner }} </span>
+    </td>
+    <td class="referee-card__login">{{ referee.login }}</td>
+    <td class="referee-card__password">{{ referee.password }}</td>
+    <td class="referee-card__edit">Редактировать</td>
+    <td class="referee-card__delete">Удалить</td>
+  </tr>
+</table>

@@ -1,0 +1,82 @@
+@import "../../../styles.scss";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 30px 0;
+}
+
+.referee-table {
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  width: 100%;
+  max-width: 1300px;
+
+  & > tr > th:first-child {
+    padding-left: 10px;
+  }
+}
+
+.referee-card {
+  background-color: white;
+  border-radius: 5px;
+  font-size: 14px;
+
+  & > td {
+    padding: 12px 0;
+    padding-right: 10px;
+
+    &:first-child {
+      border-radius: 5px 0 0 5px;
+      padding-left: 14px;
+    }
+    &:last-child {
+      border-radius: 0 5px 5px 0;
+      padding-right: 14px;
+    }
+  }
+
+  &__name {
+    width: 270px;
+  }
+
+  &__runners {
+    width: 360px;
+  }
+
+  &__login {
+    width: 120px;
+  }
+
+  &__password {
+    width: 340px;
+  }
+
+  &__edit {
+    width: 130px;
+    cursor: pointer;
+    color: $color-primary;
+
+    &:hover {
+      color: $color-primary-select;
+    }
+  }
+
+  &__delete {
+    width: 70px;
+    cursor: pointer;
+    color: $color-danger;
+
+    &:hover {
+      color: $color-danger-select;
+    }
+  }
+}
+
+.add-referee-button {
+  width: 210px;
+  margin-bottom: 10px;
+}
