@@ -2,18 +2,18 @@
   <tr>
     <th *ngFor="let title of tableTitles">{{ title }}</th>
   </tr>
-  <tr class="results-card" *ngFor="let result of results">
-    <td class="results-card__column results-card__place">{{ result.place }}</td>
-    <td class="results-card__column results-card__id">{{ result.id }}</td>
-    <td class="results-card__column results-card__name">{{ result.name }}</td>
+  <tr class="results-card" *ngFor="let runner of runners; let i = index">
+    <td class="results-card__column results-card__place">{{ i + 1 }}</td>
+    <td class="results-card__column results-card__id">{{ runner.number }}</td>
+    <td class="results-card__column results-card__name">{{ runner.name }}</td>
     <td class="results-card__column results-card__pace">
       <!-- {{ getPace(result.distance) }} -->
       5:55 мин/км
     </td>
     <td class="results-card__column results-card__last-lap-time">
-      {{ result.lastLapTime }}
+      {{ runner.lastLapTime }}
     </td>
-    <td class="results-card__column results-card__laps">{{ result.laps }}</td>
-    <td class="results-card__column results-card__distance">{{ result.distance }}</td>
+    <td class="results-card__column results-card__laps">{{ runner.laps }}</td>
+    <td class="results-card__column results-card__distance">{{ runner.distance }}</td>
   </tr>
 </table>

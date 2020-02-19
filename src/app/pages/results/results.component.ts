@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
+import * as _ from 'lodash';
+
+import { RefereeService } from 'src/app/layouts/referee/referee.service';
 // import moment from 'moment';
 
 enum WizardTableHeader {
@@ -18,37 +22,9 @@ enum WizardTableHeader {
 })
 export class ResultsComponent implements OnInit {
   public tableTitles = Object.values(WizardTableHeader);
+  public runners: any;
 
-  public resultsMock = [
-    {
-      place: '1',
-      id: '123456',
-      name: 'John Doe',
-      laps: '120',
-      lastLapTime: 12000,
-      distance: 27000,
-    },
-    {
-      place: '1',
-      id: '123456',
-      name: 'John Doe',
-      laps: '120',
-      lastLapTime: 12000,
-      distance: 27000,
-    },
-    {
-      place: '1',
-      id: '123456',
-      name: 'John Doe',
-      laps: '120',
-      lastLapTime: 12000,
-      distance: 27000,
-    },
-  ];
-
-  public results = this.resultsMock;
-
-  constructor() { }
+  constructor(private refereeService: RefereeService) { }
 
   // getPace(distance) {
   //   const momentTime = moment.duration(**racetime** / (distance / 1000));
@@ -56,6 +32,13 @@ export class ResultsComponent implements OnInit {
   // }
 
   ngOnInit() {
+    this.getRunners();
+  }
+
+  private getRunners() {
+    return this.refereeService.getRunners().subscribe((data) => {
+      this.runners = _.sortBy(data, ["laps"]).reverse();
+    });
   }
 
 }
