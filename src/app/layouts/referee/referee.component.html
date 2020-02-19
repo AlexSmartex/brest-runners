@@ -1,1 +1,10 @@
-<p>referee works!</p>
+<header class="referee-header">
+  <h3>Runners</h3>
+  <a [routerLink]="['/login']" class="referee-logout-button">Выйти</a>
+</header>
+
+<h2 *ngIf="!runners?.length" class="referee-empty-list-placeholder">
+  Нет текущих забегов
+</h2>
+
+<app-referees-runner-card *ngFor="let runner of runners" [id]="runner.id"></app-referees-runner-card>

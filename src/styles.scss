@@ -1,8 +1,11 @@
 $color-background: #fafafa;
 $color-primary: #37ac00;
 $color-primary-select: #65d132;
+$color-inactive: #c9c9c9;
 $color-grey: #7a7a7a;
 $color-grey-light: #e5e5e5;
+$color-danger: #ff3d3d;
+$color-danger-select: rgb(209, 0, 0);
 
 @mixin hidePlaceholderOnFocus {
   &:focus {
@@ -34,6 +37,7 @@ html,
 body {
   height: 100%;
   width: 100%;
+  background-color: $color-background;
 }
 
 body {
@@ -66,10 +70,39 @@ button {
 
 h2,
 h3 {
+  font-weight: bold;
   text-transform: uppercase;
 }
 
 input {
   outline: 0;
   border: 0;
+}
+
+th {
+  font-size: 14px;
+  color: #787878;
+  text-align: left;
+  font-weight: normal;
+}
+
+.cross-icon {
+  font-weight: bold;
+  font-size: 36px;
+  text-align: center;
+}
+
+.button-standard {
+  background-color: $color-primary;
+  cursor: pointer;
+  color: white;
+  height: 40px;
+  border-radius: 5px;
+
+  font-weight: bold;
+  font-size: 18px;
+
+  &:hover {
+    background-color: $color-primary-select;
+  }
 }

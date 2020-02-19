@@ -1,0 +1,60 @@
+@import "../../../../styles.scss";
+
+:host {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 10px;
+
+  width: calc(100% - 20px);
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.referee-runner-card__time-wrapper {
+  text-align: right;
+
+  font-size: 14px;
+}
+
+.referee-runner-card__time-title {
+  font-weight: 300;
+}
+
+.referee-runner-card__button-wrapper {
+  display: flex;
+
+  grid-column: span 2;
+  background-color: $color-background;
+  border-radius: 5px;
+
+  font-size: 18px;
+}
+
+.referee-runner-card__lap-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  box-sizing: initial;
+  border: 1px solid $color-grey-light;
+  border-radius: 5px 0 0 5px;
+}
+
+.referee-runner-card__button {
+  width: 100%;
+  border-radius: 0 5px 5px 0;
+  background-color: $color-primary;
+  color: white;
+
+  &:hover {
+    background-color: $color-primary-select;
+  }
+
+  &--inactive {
+    background-color: $color-inactive;
+  }
+}

@@ -7,6 +7,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RefereeListComponent implements OnInit {
 
+  public refereesMock = [
+    {
+      name: 'John Doe',
+      runners: [123212, 345345, 434545, 988898, 789887, 888899, 223403, 342343, 444298, 657755],
+      login: 'johndoe123',
+      password: 'qwerty',
+    },
+    {
+      name: 'John Doe',
+      runners: [123212, 345345, 434545, 988898, 789887, 888899, 223403, 342343, 444298, 657755],
+      login: 'johndoe123',
+      password: 'qwerty',
+    },
+    {
+      name: 'John Doe',
+      runners: [123212, 345345, 434545, 988898, 789887, 888899, 223403, 342343, 444298, 657755],
+      login: 'johndoe123',
+      password: 'qwerty',
+    },
+  ];
+
+  public referees = this.refereesMock;
+
   constructor() { }
 
   ngOnInit() {

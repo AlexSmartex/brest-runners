@@ -1,0 +1,39 @@
+@import "../../../styles.scss";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: $color-background;
+}
+
+.referee-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: white;
+  width: 100%;
+  height: 50px;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
+
+.referee-empty-list-placeholder {
+  margin-top: 40vh;
+  text-align: center;
+}
+
+.referee-logout-button {
+  color: $color-primary;
+  font-size: 18px;
+
+  &:hover {
+    color: $color-primary-select;
+  }
+}
+

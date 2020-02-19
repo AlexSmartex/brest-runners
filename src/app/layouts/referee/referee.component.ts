@@ -7,6 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RefereeComponent implements OnInit {
 
+  public mockRunners = [
+    {
+      id: 111111,
+    },
+    {
+      id: 222222,
+    },
+    {
+      id: 333333,
+    }
+  ];
+
+  public runners = this.mockRunners;
+
   constructor() { }
 
   ngOnInit() {

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RefereeListComponent } from './referee-list.component';
+import { RefereesRunnerCardComponent } from './referees-runner-card.component';
 
-describe('RefereeListComponent', () => {
-  let component: RefereeListComponent;
-  let fixture: ComponentFixture<RefereeListComponent>;
+describe('RefereesRunnerCardComponent', () => {
+  let component: RefereesRunnerCardComponent;
+  let fixture: ComponentFixture<RefereesRunnerCardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RefereeListComponent ]
+      declarations: [ RefereesRunnerCardComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RefereeListComponent);
+    fixture = TestBed.createComponent(RefereesRunnerCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
