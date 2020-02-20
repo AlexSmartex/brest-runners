@@ -17,9 +17,9 @@ enum WizardTableHeader {
   styleUrls: ['./runner-list.component.scss']
 })
 export class RunnerListComponent implements OnInit {
-  public modalActive = false;
-  public modalFields = [];
   public tableTitles = Object.values(WizardTableHeader);
+  public modalActive = false;
+  public modalFields = this.tableTitles;
   public runners: any;
 
   constructor(private refereeService: RefereeService) { }
@@ -35,9 +35,16 @@ export class RunnerListComponent implements OnInit {
     });
   }
 
+  public toggleModal(state: boolean, e?: any, onOutside?: boolean) {
+    if (!onOutside) {
+      this.modalActive = state;
+    } else if (onOutside && e.target === e.currentTarget) {
+      this.modalActive = state;
+    }
+  }
 
-  public toggleModal(bool: boolean) {
-    this.modalActive = bool;
+  public onModalSubmit() {
+    this.modalActive = false;
   }
 
 }

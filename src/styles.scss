@@ -106,4 +106,13 @@ th {
   &:hover {
     background-color: $color-primary-select;
   }
+
+  &--grey {
+    color: $color-grey;
+    background-color: $color-grey-light;
+
+    &:hover {
+      background-color: $color-inactive;
+    }
+  }
 }

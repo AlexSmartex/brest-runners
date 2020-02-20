@@ -1,4 +1,6 @@
-<button class="button-standard add-runner-button" (click)="onClick()">Добавить Спортсмена</button>
+<button class="button-standard add-runner-button" (click)="toggleModal(true)">
+  Добавить Спортсмена
+</button>
 
 <table class="runner-table">
   <tr>
@@ -8,11 +10,16 @@
     <td class="runner-card__column runner-card__id">{{ runner.number }}</td>
     <td class="runner-card__column runner-card__name">{{ runner.name }}</td>
     <td class="runner-card__column runner-card__referee">
-      {{ runner.referee || 'referee placeholder'}}
+      {{ runner.referee || "referee placeholder" }}
     </td>
     <td class="runner-card__column runner-card__edit">Редактировать</td>
     <td class="runner-card__column runner-card__delete">Удалить</td>
   </tr>
 </table>
 
-<app-modal *ngIf="modalActive" [modalFields]="modalFields" (click)="hideModal()"></app-modal>
+<app-modal
+  *ngIf="modalActive"
+  [modalFields]="modalFields"
+  (mousedown)="toggleModal(false, $event, true)"
+  [onSubmit]="onModalSubmit"
+></app-modal>
