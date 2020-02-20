@@ -39,6 +39,6 @@
   (sendFormData)="handleEditRunnerFormData($event)"
   (closeModal)="handleEditRunnerCloseModal($event)"
   (mousedown)="toggleEditRunnerModal(null, false, $event, true)"
-  [fieldValues]="[runnerData.number, runnerData.name, runnerData.referee]"
+  [fieldValues]="[runnerData.number, runnerData.name]"
   buttonText="Сохранить"
 ></app-modal>

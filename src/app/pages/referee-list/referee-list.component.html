@@ -15,3 +15,21 @@
     <td class="referee-card__column referee-card__delete">Удалить</td>
   </tr>
 </table>
+
+<app-modal
+  *ngIf="addRefereeModalActive"
+  [modalFields]="modalFields"
+  (sendFormData)="handleAddRefereeFormData($event)"
+  (closeModal)="handleAddRefereeCloseModal()"
+  (mousedown)="toggleAddRefereeModal(false, $event, true)"
+></app-modal>
+
+<app-modal
+  *ngIf="editRefereeModalActive"
+  [modalFields]="modalFields"
+  (sendFormData)="handleEditRefereeFormData($event)"
+  (closeModal)="handleEditRefereeCloseModal($event)"
+  (mousedown)="toggleEditRefereeModal(null, false, $event, true)"
+  [fieldValues]="[RefereeData.number, RefereeData.name, RefereeData.referee]"
+  buttonText="Сохранить"
+></app-modal>

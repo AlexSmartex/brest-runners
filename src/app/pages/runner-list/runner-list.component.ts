@@ -24,7 +24,7 @@ export class RunnerListComponent implements OnInit {
   public runnerData: any;
 
   constructor(private refereeService: RefereeService,
-    private db: AngularFireDatabase) { }
+              private db: AngularFireDatabase) { }
 
   ngOnInit() {
     this.getRunners();
