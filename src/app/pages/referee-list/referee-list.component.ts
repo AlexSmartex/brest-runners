@@ -55,9 +55,7 @@ export class RefereeListComponent implements OnInit {
       name: data[0],
       login: data[1],
       password: data[2],
-      runners: Object.values(data).slice(3).filter((runner: string) => {
-        return runner.length !== 0;
-      }),
+      runners: Object.values(data).slice(3).filter((runner: string) => runner.length !== 0),
     };
     this.db
       .list('referies')
@@ -81,6 +79,9 @@ export class RefereeListComponent implements OnInit {
 
   public handleEditRefereeFormData(data: any) {
     this.refereeData.name = data[0];
+    this.refereeData.login = data[1];
+    this.refereeData.password = data[2];
+    this.refereeData.runners = Object.values(data).slice(3).filter((runner: string) => runner.length !== 0);
     this.db.list('referees').update(this.refereeData.key, this.refereeData);
     this.editRefereeModalActive = false;
     this.refereeData = [];
