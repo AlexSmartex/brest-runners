@@ -19,12 +19,12 @@ export class RunnerListComponent implements OnInit {
   public tableTitles = Object.values(WizardTableHeader);
   public addRunnerModalActive = false;
   public editRunnerModalActive = false;
-  public modalFields = [WizardTableHeader.ID, WizardTableHeader.NAME]
+  public modalFields = [WizardTableHeader.NAME]
   public runners: any;
   public runnerData: any;
 
   constructor(private refereeService: RefereeService,
-              private db: AngularFireDatabase) { }
+    private db: AngularFireDatabase) { }
 
   ngOnInit() {
     this.getRunners();
@@ -45,9 +45,18 @@ export class RunnerListComponent implements OnInit {
     }
   }
 
-  public handleAddRunnerFormData(event: any) {
-    // event is an array of runner data
-    // todo send post request with new runner
+  public handleAddRunnerFormData(data: any) {
+    const runnerData = {
+      number: this.runners.length + 1,
+      name: data[1],
+      laps: 0,
+      totalDistance: 0,
+    };
+
+    this.db
+      .list('runners')
+      .push(runnerData);
+
     this.addRunnerModalActive = false;
   }
 
@@ -65,8 +74,7 @@ export class RunnerListComponent implements OnInit {
   }
 
   public handleEditRunnerFormData(data: any) {
-    this.runnerData.number = data[0];
-    this.runnerData.name = data[1];
+    this.runnerData.name = data[0];
     this.db.list('runners').update(this.runnerData.key, this.runnerData);
     this.editRunnerModalActive = false;
     this.runnerData = [];

@@ -18,8 +18,10 @@ export class RefereeListComponent implements OnInit {
   public tableTitles = Object.values(WizardTableHeader);
   public referees;
 
-  constructor(private refereeService: RefereeService,
-    private db: AngularFireDatabase) { }
+  constructor(
+    private refereeService: RefereeService,
+    private db: AngularFireDatabase
+  ) { }
 
   private getReferees() {
     return this.refereeService.getReferies().subscribe((data) => {
