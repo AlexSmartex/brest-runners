@@ -37,7 +37,7 @@ export class ResultsComponent implements OnInit {
 
   private getRunners() {
     return this.refereeService.getRunners().subscribe((data) => {
-      this.runners = _.sortBy(data, ["laps"]).reverse();
+      this.runners = _.sortBy(data, ['laps']).reverse();
     });
   }
 
