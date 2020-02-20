@@ -28,4 +28,11 @@ export class RefereeService {
   public updateRunner(runner: any) {
     return this.db.list('runners').update(runner.key, runner);
   }
+
+  public getSettings() {
+    return this.db
+            .list('settings')
+            .snapshotChanges()
+            .pipe(map((changes) => changes.map((c) => ({ key: c.payload.key, ...c.payload.val() }))));
+  }
 }

@@ -10,5 +10,6 @@
 <app-referees-runner-card
   *ngFor="let runner of filteredRunners"
   (setLaps)="handleAddLaps($event)"
+  [settings]="settings"
   [runner]="runner">
 </app-referees-runner-card>

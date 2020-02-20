@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import * as _ from 'lodash';
+import * as moment from 'moment';
 
 import { RefereeService } from 'src/app/layouts/referee/referee.service';
 // import moment from 'moment';
@@ -9,7 +10,7 @@ enum WizardTableHeader {
   PLACE = 'Место',
   ID = 'Номер',
   NAME = 'Имя',
-  PACE = 'Темп',
+  PACE = 'Средняя скорость круга',
   LAST_LAP_TIME = 'Время последнего круга',
   LAPS = 'Кругов',
   DISTANCE = 'Расстояние',
@@ -26,18 +27,35 @@ export class ResultsComponent implements OnInit {
 
   constructor(private refereeService: RefereeService) { }
 
-  // getPace(distance) {
-  //   const momentTime = moment.duration(**racetime** / (distance / 1000));
-  //   return `${momentTime.minutes()}:${momentTime.seconds} мин/км`;
-  // }
-
   ngOnInit() {
     this.getRunners();
   }
 
   private getRunners() {
     return this.refereeService.getRunners().subscribe((data) => {
-      this.runners = _.sortBy(data, ['laps']).reverse();
+      this.runners = _.sortBy(data, ['laps', 'totalDistance']).reverse();
+
+      this.runners = _.forEach(this.runners, (runner) => {
+        runner.distance = `${runner.totalDistance}m`;
+        if (runner.lapsTime && runner.lapsTime.length) {
+          runner.lastLapTime = moment(runner.lapsTime[runner.lapsTime.length - 1].difference).format('mm:ss');
+        } else {
+          runner.lastLapTime = '';
+        }
+        if (!runner.lapsTime) {
+          return;
+        }
+        const differenceArray = runner.lapsTime.map((lapTime) => lapTime.difference)
+        const average = differenceArray.reduce((total, amount, index, array) => {
+          total += amount;
+          if ( index === array.length - 1) {
+            return total / array.length;
+          } else {
+            return total;
+          }
+        });
+        runner.averageLapTime = moment(average).format('mm:ss');
+      });
     });
   }
 
