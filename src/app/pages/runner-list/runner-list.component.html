@@ -1,4 +1,7 @@
-<button class="button-standard add-runner-button" (click)="toggleAddRunnerModal(true)">
+<button
+  class="button-standard add-runner-button"
+  (click)="toggleAddRunnerModal(true)"
+>
   Добавить Спортсмена
 </button>
 
@@ -12,7 +15,12 @@
     <td class="runner-card__column runner-card__referee">
       {{ runner.referee || "referee placeholder" }}
     </td>
-    <td class="runner-card__column runner-card__edit" (click)="toggleEditRunnerModal(runner, true)">Редактировать</td>
+    <td
+      class="runner-card__column runner-card__edit"
+      (click)="toggleEditRunnerModal(runner, true)"
+    >
+      Редактировать
+    </td>
     <td class="runner-card__column runner-card__delete">Удалить</td>
   </tr>
 </table>
@@ -29,8 +37,8 @@
   *ngIf="editRunnerModalActive"
   [modalFields]="modalFields"
   (sendFormData)="handleEditRunnerFormData($event)"
-  (closeModal)="handleEditRunnerCloseModal()"
+  (closeModal)="handleEditRunnerCloseModal($event)"
   (mousedown)="toggleEditRunnerModal(null, false, $event, true)"
-  [fieldValues]="runnerData"
+  [fieldValues]="[runnerData.number, runnerData.name, runnerData.referee]"
   buttonText="Сохранить"
 ></app-modal>

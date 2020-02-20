@@ -19,7 +19,7 @@ export class RunnerListComponent implements OnInit {
   public tableTitles = Object.values(WizardTableHeader);
   public addRunnerModalActive = false;
   public editRunnerModalActive = false;
-  public modalFields = this.tableTitles;
+  public modalFields = [WizardTableHeader.ID, WizardTableHeader.NAME]
   public runners: any;
   public runnerData: any;
 
@@ -57,24 +57,22 @@ export class RunnerListComponent implements OnInit {
 
   public toggleEditRunnerModal(runnerData: any, state: boolean, e?: any, onOutside?: boolean) {
     if (!onOutside) {
-      this.runnerData = [
-        runnerData.number,
-        runnerData.name,
-        runnerData.referee,
-      ];
+      this.runnerData = runnerData;
       this.editRunnerModalActive = state;
     } else if (onOutside && e.target === e.currentTarget) {
       this.editRunnerModalActive = state;
     }
   }
 
-  public handleEditRunnerFormData(event: any) {
-    // event is an array of runner data
-    // todo send post request with new runner
+  public handleEditRunnerFormData(data: any) {
+    this.runnerData.number = data[0];
+    this.runnerData.name = data[1];
+    this.db.list('runners').update(this.runnerData.key, this.runnerData);
     this.editRunnerModalActive = false;
+    this.runnerData = [];
   }
 
-  public handleEditRunnerCloseModal() {
+  public handleEditRunnerCloseModal(data) {
     this.editRunnerModalActive = false;
   }
 }

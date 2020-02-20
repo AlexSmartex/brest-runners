@@ -19,16 +19,21 @@ export class ModalComponent implements OnInit {
     1: '',
     2: '',
     3: '',
-    4: ''
   });
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    if (this.fieldValues) {
+      this.modalForm = this.fb.group({
+        0: this.fieldValues[0] || '',
+        1: this.fieldValues[1] || '',
+      });
+    }
   }
 
   onCancel() {
-    this.closeModal.emit();
+    this.closeModal.emit(this.modalForm.value);
   }
 
   onFormSubmit() {
