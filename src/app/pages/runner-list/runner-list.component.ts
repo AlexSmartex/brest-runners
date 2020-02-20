@@ -47,4 +47,12 @@ export class RunnerListComponent implements OnInit {
     this.toggleModal(false);
   }
 
+  public handleFormData(event: any) {
+
+  }
+
+  public handleCloseModal(event: any) {
+    
+  }
+
 }
