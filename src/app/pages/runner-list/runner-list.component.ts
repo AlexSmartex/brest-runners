@@ -80,7 +80,7 @@ export class RunnerListComponent implements OnInit {
     this.runnerData = [];
   }
 
-  public handleEditRunnerCloseModal(data) {
+  public handleEditRunnerCloseModal() {
     this.editRunnerModalActive = false;
   }
 }

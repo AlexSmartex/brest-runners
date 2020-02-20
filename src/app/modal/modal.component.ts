@@ -23,6 +23,11 @@ export class ModalComponent implements OnInit {
     5: '',
     6: '',
     7: '',
+    8: '',
+    9: '',
+    10: '',
+    11: '',
+    12: '',
   });
 
   constructor(private fb: FormBuilder) { }
@@ -38,6 +43,11 @@ export class ModalComponent implements OnInit {
         5: this.fieldValues[5] || '',
         6: this.fieldValues[6] || '',
         7: this.fieldValues[7] || '',
+        8: this.fieldValues[8] || '',
+        9: this.fieldValues[9] || '',
+        10: this.fieldValues[10] || '',
+        11: this.fieldValues[11] || '',
+        12: this.fieldValues[12] || '',
       });
     }
   }

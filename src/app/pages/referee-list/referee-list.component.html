@@ -1,17 +1,31 @@
-<button class="button-standard add-referee-button">Добавить судью</button>
+<button
+  class="button-standard add-referee-button"
+  (click)="toggleAddRefereeModal(true)"
+>
+  Добавить судью
+</button>
 
 <table class="referee-table">
   <tr>
-    <th *ngFor="let title of tableTitles">{{title}}</th>
+    <th *ngFor="let title of tableTitles">{{ title }}</th>
   </tr>
   <tr class="referee-card" *ngFor="let referee of referees">
     <td class="referee-card__column referee-card__name">{{ referee.name }}</td>
     <td class="referee-card__column referee-card__runners">
       <span *ngFor="let runner of referee.runners">#{{ runner }} </span>
     </td>
-    <td class="referee-card__column referee-card__login">{{ referee.login }}</td>
-    <td class="referee-card__column referee-card__password">{{ referee.password }}</td>
-    <td class="referee-card__column referee-card__edit">Редактировать</td>
+    <td class="referee-card__column referee-card__login">
+      {{ referee.login }}
+    </td>
+    <td class="referee-card__column referee-card__password">
+      {{ referee.password }}
+    </td>
+    <td
+      class="referee-card__column referee-card__edit"
+      (click)="toggleEditRefereeModal(referee, true)"
+    >
+      Редактировать
+    </td>
     <td class="referee-card__column referee-card__delete">Удалить</td>
   </tr>
 </table>
@@ -30,6 +44,6 @@
   (sendFormData)="handleEditRefereeFormData($event)"
   (closeModal)="handleEditRefereeCloseModal($event)"
   (mousedown)="toggleEditRefereeModal(null, false, $event, true)"
-  [fieldValues]="[RefereeData.number, RefereeData.name, RefereeData.referee]"
+  [fieldValues]="[refereeData.name, refereeData.login, refereeData.password].concat(refereeData.runners)"
   buttonText="Сохранить"
 ></app-modal>
