@@ -6,5 +6,5 @@
     [placeholder]="field"
   />
   <button class="button-standard modal-button-submit" (click)="onSubmit()">Добавить</button>
-  <button class="button-standard button-standard--grey">Отменить</button>
+  <button (click)="emitEvent()" class="button-standard button-standard--grey">Отменить</button>
 </div>

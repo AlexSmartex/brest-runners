@@ -22,4 +22,5 @@
   [modalFields]="modalFields"
   (mousedown)="toggleModal(false, $event, true)"
   [onSubmit]="onModalSubmit"
+  (modalOutput)="onModalSubmit($event)"
 ></app-modal>

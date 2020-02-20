@@ -18,7 +18,7 @@ export class ModalComponent implements OnInit {
   }
 
   emitEvent() {
-    this.modalOutput.emit(this.modalOutput);
+    this.modalOutput.emit(false);
   }
 
 }
