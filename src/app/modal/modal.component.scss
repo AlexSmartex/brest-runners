@@ -1,0 +1,46 @@
+@import '../../styles.scss';
+
+:host {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+
+  padding: 30px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.modal-input-field {
+  width: 300px;
+  height: 40px;
+  border-radius: 4px;
+  border: 2px solid $color-grey-light;
+  padding: 0 12px;
+  color: $color-grey;
+  transition: all 0.2s;
+  margin-bottom: 10px;
+
+  @include hidePlaceholderOnFocus;
+}
+
+.modal-label {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-button-submit {
+  margin-bottom: 4px;
+}

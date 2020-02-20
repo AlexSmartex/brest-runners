@@ -1,0 +1,16 @@
+<form [formGroup]="modalForm" class="modal-form">
+  <input
+    *ngFor="let field of modalFields; index as i"
+    type="text"
+    class="modal-input-field"
+    [formControlName]="i"
+    [placeholder]="field"
+    value="{{fieldValues[i] || ''}}"
+  />
+  <button (click)="onFormSubmit()" class="button-standard modal-button-submit">
+    {{buttonText || "Добавить"}}
+  </button>
+  <button (click)="onCancel()" class="button-standard button-standard--grey">
+    Отменить
+  </button>
+</form>

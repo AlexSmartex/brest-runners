@@ -1,16 +1,44 @@
-<button class="button-standard add-runner-button">Добавить Спортсмена</button>
+<button
+  class="button-standard add-runner-button"
+  (click)="toggleAddRunnerModal(true)"
+>
+  Добавить Спортсмена
+</button>
 
 <table class="runner-table">
   <tr>
     <th *ngFor="let title of tableTitles">{{ title }}</th>
   </tr>
   <tr class="runner-card" *ngFor="let runner of runners">
-    <td class="runner-card__column runner-card__id">{{ runner.id }}</td>
+    <td class="runner-card__column runner-card__id">{{ runner.number }}</td>
     <td class="runner-card__column runner-card__name">{{ runner.name }}</td>
     <td class="runner-card__column runner-card__referee">
-      {{ runner.referee }}
+      {{ runner.referee || "" }}
     </td>
-    <td class="runner-card__column runner-card__edit">Редактировать</td>
+    <td
+      class="runner-card__column runner-card__edit"
+      (click)="toggleEditRunnerModal(runner, true)"
+    >
+      Редактировать
+    </td>
     <td class="runner-card__column runner-card__delete">Удалить</td>
   </tr>
 </table>
+
+<app-modal
+  *ngIf="addRunnerModalActive"
+  [modalFields]="modalFields"
+  (sendFormData)="handleAddRunnerFormData($event)"
+  (closeModal)="handleAddRunnerCloseModal()"
+  (mousedown)="toggleAddRunnerModal(false, $event, true)"
+></app-modal>
+
+<app-modal
+  *ngIf="editRunnerModalActive"
+  [modalFields]="modalFields"
+  (sendFormData)="handleEditRunnerFormData($event)"
+  (closeModal)="handleEditRunnerCloseModal($event)"
+  (mousedown)="toggleEditRunnerModal(null, false, $event, true)"
+  [fieldValues]="[runnerData.name]"
+  buttonText="Сохранить"
+></app-modal>

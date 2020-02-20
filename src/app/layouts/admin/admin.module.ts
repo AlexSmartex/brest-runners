@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AdminComponent } from './admin.component';
 import { MainComponent } from 'src/app/pages/main/main.component';
@@ -9,6 +10,7 @@ import { ResultsComponent } from 'src/app/pages/results/results.component';
 import { HeaderComponent } from './header/header.component';
 import { AdminRouteModule } from './admin-route.module';
 import { FormatTimePipe } from 'src/app/shared/pipes/format-time.pipe';
+import { ModalComponent } from 'src/app/modal/modal.component';
 
 
 
@@ -20,11 +22,13 @@ import { FormatTimePipe } from 'src/app/shared/pipes/format-time.pipe';
     RunnerListComponent,
     ResultsComponent,
     HeaderComponent,
-    FormatTimePipe
+    FormatTimePipe,
+    ModalComponent,
   ],
   imports: [
     CommonModule,
-    AdminRouteModule
+    AdminRouteModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

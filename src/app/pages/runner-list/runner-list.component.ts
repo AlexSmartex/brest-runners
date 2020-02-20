@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/database';
+import * as _ from 'lodash';
+import { RefereeService } from 'src/app/layouts/referee/referee.service';
 
 enum WizardTableHeader {
   ID = 'Номер',
@@ -14,29 +17,70 @@ enum WizardTableHeader {
 })
 export class RunnerListComponent implements OnInit {
   public tableTitles = Object.values(WizardTableHeader);
+  public addRunnerModalActive = false;
+  public editRunnerModalActive = false;
+  public modalFields = [WizardTableHeader.NAME]
+  public runners: any;
+  public runnerData: any;
 
-  public runnersMock = [
-    {
-      id: 123456,
-      name: 'John Doe',
-      referee: 'Anno Nymous',
-    },
-    {
-      id: 123456,
-      name: 'John Doe',
-      referee: 'Anno Nymous',
-    },    {
-      id: 123456,
-      name: 'John Doe',
-      referee: 'Anno Nymous',
-    },
-  ];
-
-  public runners = this.runnersMock;
-
-  constructor() { }
+  constructor(private refereeService: RefereeService,
+    private db: AngularFireDatabase) { }
 
   ngOnInit() {
+    this.getRunners();
   }
 
+
+  private getRunners() {
+    return this.refereeService.getRunners().subscribe((data) => {
+      this.runners = _.sortBy(data, ['laps']).reverse();
+    });
+  }
+
+  public toggleAddRunnerModal(state: boolean, e?: any, onOutside?: boolean) {
+    if (!onOutside) {
+      this.addRunnerModalActive = state;
+    } else if (onOutside && e.target === e.currentTarget) {
+      this.addRunnerModalActive = state;
+    }
+  }
+
+  public handleAddRunnerFormData(data: any) {
+    const runnerData = {
+      number: this.runners.length + 1,
+      name: data[1],
+      laps: 0,
+      totalDistance: 0,
+    };
+
+    this.db
+      .list('runners')
+      .push(runnerData);
+
+    this.addRunnerModalActive = false;
+  }
+
+  public handleAddRunnerCloseModal() {
+    this.addRunnerModalActive = false;
+  }
+
+  public toggleEditRunnerModal(runnerData: any, state: boolean, e?: any, onOutside?: boolean) {
+    if (!onOutside) {
+      this.runnerData = runnerData;
+      this.editRunnerModalActive = state;
+    } else if (onOutside && e.target === e.currentTarget) {
+      this.editRunnerModalActive = state;
+    }
+  }
+
+  public handleEditRunnerFormData(data: any) {
+    this.runnerData.name = data[0];
+    this.db.list('runners').update(this.runnerData.key, this.runnerData);
+    this.editRunnerModalActive = false;
+    this.runnerData = [];
+  }
+
+  public handleEditRunnerCloseModal() {
+    this.editRunnerModalActive = false;
+  }
 }
