@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import * as _ from 'lodash';
+
+import { RefereeService } from 'src/app/layouts/referee/referee.service';
+
 enum WizardTableHeader {
   ID = 'Номер',
   NAME = 'Имя',
@@ -13,30 +17,27 @@ enum WizardTableHeader {
   styleUrls: ['./runner-list.component.scss']
 })
 export class RunnerListComponent implements OnInit {
+  public modalActive = false;
+  public modalFields = [];
   public tableTitles = Object.values(WizardTableHeader);
+  public runners: any;
 
-  public runnersMock = [
-    {
-      id: 123456,
-      name: 'John Doe',
-      referee: 'Anno Nymous',
-    },
-    {
-      id: 123456,
-      name: 'John Doe',
-      referee: 'Anno Nymous',
-    },    {
-      id: 123456,
-      name: 'John Doe',
-      referee: 'Anno Nymous',
-    },
-  ];
-
-  public runners = this.runnersMock;
-
-  constructor() { }
+  constructor(private refereeService: RefereeService) { }
 
   ngOnInit() {
+    this.getRunners();
+  }
+
+
+  private getRunners() {
+    return this.refereeService.getRunners().subscribe((data) => {
+      this.runners = _.sortBy(data, ['laps']).reverse();
+    });
+  }
+
+
+  public toggleModal(bool: boolean) {
+    this.modalActive = bool;
   }
 
 }

@@ -9,6 +9,7 @@ import { ResultsComponent } from 'src/app/pages/results/results.component';
 import { HeaderComponent } from './header/header.component';
 import { AdminRouteModule } from './admin-route.module';
 import { FormatTimePipe } from 'src/app/shared/pipes/format-time.pipe';
+import { ModalComponent } from 'src/app/modal/modal.component';
 
 
 
@@ -20,7 +21,8 @@ import { FormatTimePipe } from 'src/app/shared/pipes/format-time.pipe';
     RunnerListComponent,
     ResultsComponent,
     HeaderComponent,
-    FormatTimePipe
+    FormatTimePipe,
+    ModalComponent,
   ],
   imports: [
     CommonModule,
