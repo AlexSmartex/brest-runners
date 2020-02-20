@@ -5,6 +5,7 @@ import { RefereeComponent } from './referee.component';
 import { RefereeRouteModule } from './referee-route.module';
 
 import { RefereesRunnerCardComponent } from './referees-runner-card/referees-runner-card.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { RefereesRunnerCardComponent } from './referees-runner-card/referees-run
   ],
   imports: [
     CommonModule,
+    FormsModule,
     RefereeRouteModule,
   ]
 })

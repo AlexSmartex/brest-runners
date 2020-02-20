@@ -1,7 +1,28 @@
 <ng-container *ngIf="data">
-  <h2>#{{data.number}}</h2>
-  <div class="referee-runner-card__button-wrapper">
-    <div class="referee-runner-card__lap-counter">{{data.laps}}</div>
-    <button (click)="handleAddLaps()" class="referee-runner-card__button"><span class="cross-icon">+</span></button>
-  </div>
+  <ng-container *ngIf="!isFinish else addLastLapDistance">
+    <h2>#{{data.number}}</h2>
+    <div class="referee-runner-card__button-wrapper">
+      <div class="referee-runner-card__lap-counter">{{data.laps}}</div>
+      <button
+        (click)="handleAddLaps()"
+        [disabled]="disableAddButton"
+        class="referee-runner-card__button">
+          <span class="cross-icon">+</span>
+        </button>
+    </div>
+  </ng-container>
 </ng-container>
+
+<ng-template #addLastLapDistance>
+  <div class="referee-runner-card__button-wrapper">
+    <h2>#{{data.number}}</h2>
+    <input [disabled]="disableAddDistance" class="last-distance" type="text" [(ngModel)]="data.additionalDistance">
+    <button
+      (click)="onAddLastLapDistance()"
+      [disabled]="disableAddButton"
+      class="referee-runner-card__button referee-runner-card__button_add">
+        <span *ngIf="!disableAddDistance">Добавить</span>
+        <span *ngIf="disableAddDistance">Добавлено</span>
+    </button>
+  </div>
+</ng-template>

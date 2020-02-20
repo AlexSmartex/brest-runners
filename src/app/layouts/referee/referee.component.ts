@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RefereeService } from './referee.service';
 
-import { forkJoin } from 'rxjs';
-import { tap } from 'rxjs/operators';
-
 @Component({
   selector: 'app-referee',
   templateUrl: './referee.component.html',
@@ -16,6 +13,7 @@ export class RefereeComponent implements OnInit {
   public referee: any;
   public runners: any;
   public filteredRunners: any;
+  public settings: any;
 
   constructor(private activatedRoute: ActivatedRoute,
               private refereeService: RefereeService) { }
@@ -26,6 +24,10 @@ export class RefereeComponent implements OnInit {
 
       this.getUsers();
       this.getRunners();
+    });
+
+    this.refereeService.getSettings().subscribe((data) => {
+      this.settings = data[0];
     });
   }
 

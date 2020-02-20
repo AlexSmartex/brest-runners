@@ -8,8 +8,8 @@
         *ngSwitchCase="TABS.RUN"
         (startRun)="handleStartRun($event)"
         (stopRun)="handleStopRun($event)"
+        (goResultPage)="goResultPage($event)"
         [timeStarted]="timeStarted"
-        [timeStopped]="timeStopped"
         [countDown]="countDown">
       </app-main>
 
