@@ -1,5 +1,13 @@
 <div class="container">
-  <a *ngFor="let tab of tabs"
-    [ngClass]="tab.title === currentTab.title ? 'isActive' : 'isNotActive'"
-    (click)="selectTab(tab)">{{tab.title}}</a>
+  <nav>
+    <a
+      *ngFor="let tab of tabs"
+      [ngClass]="tab.title === currentTab.title ? 'isActive' : 'isNotActive'"
+      (click)="selectTab(tab)"
+    >
+      {{ tab.title }}
+    </a>
+  </nav>
+
+  <a class="logout-button" [routerLink]="['/']">Выйти</a>
 </div>
