@@ -30,7 +30,7 @@ export class ModalComponent implements OnInit {
     this.closeModal.emit();
   }
 
-  submitForm() {
+  onFormSubmit() {
     this.sendFormData.emit(this.modalForm.value);
   }
 
