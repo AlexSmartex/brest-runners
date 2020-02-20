@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AdminComponent } from './admin.component';
 import { MainComponent } from 'src/app/pages/main/main.component';
@@ -26,7 +27,8 @@ import { ModalComponent } from 'src/app/modal/modal.component';
   ],
   imports: [
     CommonModule,
-    AdminRouteModule
+    AdminRouteModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

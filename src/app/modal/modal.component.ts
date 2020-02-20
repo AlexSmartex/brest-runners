@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-modal',
@@ -9,16 +10,28 @@ export class ModalComponent implements OnInit {
   @Input() modalFields;
   @Input() onSubmit;
 
-  @Output() modalOutput = new EventEmitter();
+  @Output() closeModal = new EventEmitter();
+  @Output() sendFormData = new EventEmitter();
 
-  constructor() { }
+  public modalForm = this.fb.group({
+    0: '',
+    1: '',
+    2: '',
+    3: '',
+    4: ''
+  });
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
-    console.log(this.modalFields);
   }
 
-  emitEvent() {
-    this.modalOutput.emit(false);
+  onCancel() {
+    this.closeModal.emit();
+  }
+
+  submitForm() {
+    this.sendFormData.emit(this.modalForm.value);
   }
 
 }

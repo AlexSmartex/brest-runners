@@ -43,9 +43,8 @@ export class RunnerListComponent implements OnInit {
     }
   }
 
-  public onModalSubmit(data: any) {
-    console.log("HELLO")
-    this.toggleModal(data);
+  public closeModal() {
+    this.toggleModal(false);
   }
 
 }

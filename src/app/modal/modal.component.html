@@ -1,10 +1,15 @@
-<div class="modal-form">
+<form [formGroup]="modalForm" (ngSubmit)="onSubmit()" class="modal-form">
   <input
-    *ngFor="let field of modalFields"
+    *ngFor="let field of modalFields; index as i"
     type="text"
     class="modal-input-field"
+    [formControlName]="i"
     [placeholder]="field"
   />
-  <button class="button-standard modal-button-submit" (click)="onSubmit()">Добавить</button>
-  <button (click)="emitEvent()" class="button-standard button-standard--grey">Отменить</button>
-</div>
+  <button (click)="submitForm()" class="button-standard modal-button-submit">
+    Добавить
+  </button>
+  <button (click)="onCancel()" class="button-standard button-standard--grey">
+    Отменить
+  </button>
+</form>
