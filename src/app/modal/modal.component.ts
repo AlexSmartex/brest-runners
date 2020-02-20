@@ -8,7 +8,8 @@ import { FormBuilder } from '@angular/forms';
 })
 export class ModalComponent implements OnInit {
   @Input() modalFields;
-  @Input() onSubmit;
+  @Input() buttonText;
+  @Input() fieldValues = [];
 
   @Output() closeModal = new EventEmitter();
   @Output() sendFormData = new EventEmitter();
