@@ -1,19 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import * as _ from 'lodash';
 import { RefereeService } from 'src/app/layouts/referee/referee.service';
+import { RunService } from 'src/app/pages/main/run.service';
+import * as _ from 'lodash';
 
 enum WizardTableHeader {
   ID = 'Номер',
   NAME = 'Имя',
   REFEREE = 'Судья',
 }
-
-// enum WizardFormFields {
-//   NAME = 'Имя',
-//   CITY = 'Город',
-//   CLUB = 'Клуб',
-// }
 
 @Component({
   selector: 'app-runner-list',
@@ -24,17 +19,21 @@ export class RunnerListComponent implements OnInit {
   public tableTitles = Object.values(WizardTableHeader);
   public addRunnerModalActive = false;
   public editRunnerModalActive = false;
-  public modalFields = [WizardTableHeader.NAME]
+  public modalFields = [WizardTableHeader.NAME];
+  public raceState: string;
   public runners: any;
   public runnerData: any;
 
   constructor(private refereeService: RefereeService,
-    private db: AngularFireDatabase) { }
+              private db: AngularFireDatabase,
+              private runService: RunService) { }
 
   ngOnInit() {
     this.getRunners();
+    this.runService.getSettings().subscribe((data: any) => {
+      this.raceState = data[0].state;
+    });
   }
-
 
   private getRunners() {
     return this.refereeService.getRunners().subscribe((data) => {
