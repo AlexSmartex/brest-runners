@@ -9,11 +9,15 @@ enum WizardTableHeader {
   REFEREE = 'Судья',
 }
 
-// enum WizardFormFields {
-//   NAME = 'Имя',
-//   CITY = 'Город',
-//   CLUB = 'Клуб',
-// }
+enum WizardFormFields {
+  NAME = 'Имя',
+  CITY = 'Город',
+  CLUB = 'Клуб',
+  LAPS = 'Кругов',
+  LAST_LAP_DISTANCE = 'Расстояние последнего круга',
+  ADDITIONAL_DISTANCE = 'Дополнительное расстояние',
+  TOTAL_DISTANCE = 'Суммарное расстояние'
+}
 
 @Component({
   selector: 'app-runner-list',
@@ -24,7 +28,8 @@ export class RunnerListComponent implements OnInit {
   public tableTitles = Object.values(WizardTableHeader);
   public addRunnerModalActive = false;
   public editRunnerModalActive = false;
-  public modalFields = [WizardTableHeader.NAME]
+  public modalFields = Object.values(WizardFormFields);
+  public modalFieldValues: any;
   public runners: any;
   public runnerData: any;
 
@@ -54,8 +59,12 @@ export class RunnerListComponent implements OnInit {
     const runnerData = {
       number: this.runners.length + 1,
       name: data[0],
-      laps: 0,
-      totalDistance: 0,
+      city: data[1],
+      club: data[2],
+      laps: data[3] || 0,
+      lastLapDistance: data[4] || 0,
+      additionalDistance: data[5] || 0,
+      totalDistance: data[6] || 0,
     };
 
     this.db
@@ -80,6 +89,12 @@ export class RunnerListComponent implements OnInit {
 
   public handleEditRunnerFormData(data: any) {
     this.runnerData.name = data[0];
+    this.runnerData.city = data[1];
+    this.runnerData.club = data[2];
+    this.runnerData.laps = data[3] || 0;
+    this.runnerData.lastLapDistance = data[4] || 0;
+    this.runnerData.additionalDistance = data[5] || 0;
+    this.runnerData.totalDistance = data[6] || 0;
     this.db.list('runners').update(this.runnerData.key, this.runnerData);
     this.editRunnerModalActive = false;
     this.runnerData = [];
