@@ -23,7 +23,7 @@ export class RefereeListComponent implements OnInit {
     WizardTableHeader.LOGIN,
     WizardTableHeader.PASSWORD,
     ...Array(10).fill(WizardTableHeader.RUNNERS.slice(0, -1))
-  ]
+  ];
   public referees: any;
   public refereeData: any;
 
@@ -34,12 +34,12 @@ export class RefereeListComponent implements OnInit {
 
   private getReferees() {
     return this.refereeService.getReferies().subscribe((data) => {
-      this.referees = data
+      this.referees = data;
     });
   }
 
   ngOnInit() {
-    this.getReferees()
+    this.getReferees();
   }
 
   public toggleAddRefereeModal(state: boolean, e?: any, onOutside?: boolean) {

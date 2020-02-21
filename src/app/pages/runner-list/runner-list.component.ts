@@ -24,12 +24,12 @@ export class RunnerListComponent implements OnInit {
   public tableTitles = Object.values(WizardTableHeader);
   public addRunnerModalActive = false;
   public editRunnerModalActive = false;
-  public modalFields = [WizardTableHeader.NAME]
+  public modalFields = [WizardTableHeader.NAME];
   public runners: any;
   public runnerData: any;
 
   constructor(private refereeService: RefereeService,
-    private db: AngularFireDatabase) { }
+              private db: AngularFireDatabase) { }
 
   ngOnInit() {
     this.getRunners();
@@ -53,7 +53,7 @@ export class RunnerListComponent implements OnInit {
   public handleAddRunnerFormData(data: any) {
     const runnerData = {
       number: this.runners.length + 1,
-      name: data[1],
+      name: data[0],
       laps: 0,
       totalDistance: 0,
     };
