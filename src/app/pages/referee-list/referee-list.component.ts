@@ -82,7 +82,7 @@ export class RefereeListComponent implements OnInit {
     this.refereeData.login = data[1];
     this.refereeData.password = data[2];
     this.refereeData.runners = Object.values(data).slice(3).filter((runner: string) => runner.length !== 0);
-    this.db.list('referees').update(this.refereeData.key, this.refereeData);
+    this.db.list('referies').update(this.refereeData.key, this.refereeData);
     this.editRefereeModalActive = false;
     this.refereeData = [];
   }
@@ -92,7 +92,6 @@ export class RefereeListComponent implements OnInit {
   }
 
   public deleteReferee(referee) {
-    // TODO remove referee
-    // this.db.list('referees').remove(referee.key);
+    this.db.list('referies').remove(referee.key);
   }
 }
