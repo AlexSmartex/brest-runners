@@ -37,7 +37,7 @@ export class RefereeListComponent implements OnInit {
 
   private getReferees() {
     return this.refereeService.getReferies().subscribe((data) => {
-      const admin = data.find((item) => item.login === 'admin');
+      const admin = data.find((item: any) => item.login === 'admin');
       this.referees = _.without(data, admin);
     });
   }
