@@ -16,7 +16,8 @@ enum WizardFormFields {
   LAPS = 'Кругов',
   LAST_LAP_DISTANCE = 'Расстояние последнего круга',
   ADDITIONAL_DISTANCE = 'Дополнительное расстояние',
-  TOTAL_DISTANCE = 'Суммарное расстояние'
+  TOTAL_DISTANCE = 'Суммарное расстояние',
+  REFEREE = 'Судья'
 }
 
 @Component({
@@ -65,6 +66,7 @@ export class RunnerListComponent implements OnInit {
       lastLapDistance: data[4] || 0,
       additionalDistance: data[5] || 0,
       totalDistance: data[6] || 0,
+      refereeName: data[7]
     };
 
     this.db
@@ -95,6 +97,7 @@ export class RunnerListComponent implements OnInit {
     this.runnerData.lastLapDistance = data[4] || 0;
     this.runnerData.additionalDistance = data[5] || 0;
     this.runnerData.totalDistance = data[6] || 0;
+    this.runnerData.refereeName = data[7];
     this.db.list('runners').update(this.runnerData.key, this.runnerData);
     this.editRunnerModalActive = false;
     this.runnerData = [];

@@ -13,7 +13,7 @@
     <td class="runner-card__column runner-card__id">{{ runner.number }}</td>
     <td class="runner-card__column runner-card__name">{{ runner.name }}</td>
     <td class="runner-card__column runner-card__referee">
-      {{ runner.referee || "" }}
+      {{ runner.refereeName || "" }}
     </td>
     <td
       class="runner-card__column runner-card__edit"
@@ -51,7 +51,8 @@
     runnerData.laps,
     runnerData.lastLapDistance,
     runnerData.additionalDistance,
-    runnerData.totalDistance
+    runnerData.totalDistance,
+    runnerData.refereeName
   ]"
   buttonText="Сохранить"
 ></app-modal>
