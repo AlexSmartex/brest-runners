@@ -46,6 +46,7 @@ export class RefereesRunnerCardComponent implements OnInit {
   }
 
   public onAddLastLapDistance() {
+    if (this.disableAddDistance) return;
     this.disableAddDistance = true;
     this.data.totalDistance += +this.data.additionalDistance;
 

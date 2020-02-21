@@ -16,11 +16,12 @@
 <ng-template #addLastLapDistance>
   <div class="referee-runner-card__button-wrapper">
     <h2>#{{data.number}}</h2>
-    <input [disabled]="disableAddDistance" class="last-distance" type="text" [(ngModel)]="data.additionalDistance">
+    <input [disabled]="disableAddDistance" class="last-distance" type="number" [(ngModel)]="data.additionalDistance">
     <button
       (click)="onAddLastLapDistance()"
       [disabled]="disableAddButton"
-      class="referee-runner-card__button referee-runner-card__button_add">
+      class="referee-runner-card__button referee-runner-card__button_add"
+      [class.referee-runner-card__button--inactive]="disableAddDistance">
         <span *ngIf="!disableAddDistance">Добавить</span>
         <span *ngIf="disableAddDistance">Добавлено</span>
     </button>
