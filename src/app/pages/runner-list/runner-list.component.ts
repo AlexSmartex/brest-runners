@@ -1,22 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
+
 import * as _ from 'lodash';
+
 import { RefereeService } from 'src/app/layouts/referee/referee.service';
 
 enum WizardTableHeader {
   ID = 'Номер',
   NAME = 'Имя',
-  REFEREE = 'Судья',
+  CLUB = 'Клуб',
 }
 
 enum WizardFormFields {
   NAME = 'Имя',
   CITY = 'Город',
   CLUB = 'Клуб',
-  LAPS = 'Кругов',
-  LAST_LAP_DISTANCE = 'Расстояние последнего круга',
-  ADDITIONAL_DISTANCE = 'Дополнительное расстояние',
-  TOTAL_DISTANCE = 'Суммарное расстояние',
   REFEREE = 'Судья'
 }
 
@@ -35,7 +33,7 @@ export class RunnerListComponent implements OnInit {
   public runnerData: any;
 
   constructor(private refereeService: RefereeService,
-    private db: AngularFireDatabase) { }
+              private db: AngularFireDatabase) { }
 
   ngOnInit() {
     this.getRunners();
@@ -43,8 +41,11 @@ export class RunnerListComponent implements OnInit {
 
 
   private getRunners() {
-    return this.refereeService.getRunners().subscribe((data) => {
-      this.runners = _.sortBy(data, ['laps']).reverse();
+    return this.refereeService.getRunners().subscribe((data: any) => {
+      data.forEach((item) => {
+        item.number = +item.number;
+      });
+      this.runners = _.sortBy(data, ['number']);
     });
   }
 
@@ -62,11 +63,10 @@ export class RunnerListComponent implements OnInit {
       name: data[0],
       city: data[1],
       club: data[2],
-      laps: data[3] || 0,
-      lastLapDistance: data[4] || 0,
-      additionalDistance: data[5] || 0,
-      totalDistance: data[6] || 0,
-      refereeName: data[7]
+      refereeName: data[3],
+      lastLapDistance: 0,
+      additionalDistance: 0,
+      totalDistance: 0,
     };
 
     this.db
