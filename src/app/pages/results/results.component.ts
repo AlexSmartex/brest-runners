@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 import * as moment from 'moment';
 
 import { RefereeService } from 'src/app/layouts/referee/referee.service';
-// import moment from 'moment';
+import { RunService } from 'src/app/pages/main/run.service';
 
 enum WizardTableHeader {
   PLACE = 'Место',
@@ -24,11 +24,19 @@ enum WizardTableHeader {
 export class ResultsComponent implements OnInit {
   public tableTitles = Object.values(WizardTableHeader);
   public runners: any;
+  public raceState: string;
 
-  constructor(private refereeService: RefereeService) { }
+  constructor(
+    private refereeService: RefereeService,
+    private runService: RunService
+  ) { }
 
   ngOnInit() {
     this.getRunners();
+    this.runService.getSettings().subscribe((data: any) => {
+      this.raceState = data[0].state;
+      console.log(this.raceState)
+    });
   }
 
   private getRunners() {
@@ -48,7 +56,7 @@ export class ResultsComponent implements OnInit {
         const differenceArray = runner.lapsTime.map((lapTime) => lapTime.difference)
         const average = differenceArray.reduce((total, amount, index, array) => {
           total += amount;
-          if ( index === array.length - 1) {
+          if (index === array.length - 1) {
             return total / array.length;
           } else {
             return total;
