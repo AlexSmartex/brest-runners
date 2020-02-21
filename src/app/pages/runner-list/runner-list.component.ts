@@ -83,4 +83,9 @@ export class RunnerListComponent implements OnInit {
   public handleEditRunnerCloseModal() {
     this.editRunnerModalActive = false;
   }
+
+  public deleteRunner(runner) {
+    // TODO remove runner
+    // this.db.list('runners').remove(runner.key);
+  }
 }

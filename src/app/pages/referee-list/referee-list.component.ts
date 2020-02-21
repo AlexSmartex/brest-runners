@@ -91,4 +91,8 @@ export class RefereeListComponent implements OnInit {
     this.editRefereeModalActive = false;
   }
 
+  public deleteReferee(referee) {
+    // TODO remove referee
+    // this.db.list('referees').remove(referee.key);
+  }
 }

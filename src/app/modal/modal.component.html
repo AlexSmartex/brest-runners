@@ -1,5 +1,8 @@
 <form [formGroup]="modalForm" class="modal-form">
-  <label *ngFor="let field of modalFields; index as i" class="modal-field-label">
+  <label
+    *ngFor="let field of modalFields; index as i"
+    class="modal-field-label"
+  >
     {{ field }}
     <input
       type="text"
