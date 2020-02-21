@@ -98,7 +98,7 @@ export class RefereeListComponent implements OnInit {
     this.refereeData = [];
   }
 
-  public handleEditRefereeCloseModal() {
+  public handleEditRefereeCloseModal(event) {
     this.editRefereeModalActive = false;
   }
 

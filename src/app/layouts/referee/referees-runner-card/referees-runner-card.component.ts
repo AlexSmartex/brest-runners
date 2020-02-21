@@ -49,7 +49,7 @@ export class RefereesRunnerCardComponent implements OnInit {
     if (this.disableAddDistance) return;
     this.disableAddDistance = true;
     this.data.totalDistance += +this.data.additionalDistance;
-
+    console.log(this.data)
     this.setLaps.emit(this.data);
   }
 
