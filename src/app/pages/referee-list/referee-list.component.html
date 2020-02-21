@@ -21,12 +21,19 @@
       {{ referee.password }}
     </td>
     <td
+      *ngIf="raceState !== 'start'"
       class="referee-card__column referee-card__edit"
       (click)="toggleEditRefereeModal(referee, true)"
     >
       Редактировать
     </td>
-    <td class="referee-card__column referee-card__delete" (click)="deleteReferee(referee)">Удалить</td>
+    <td
+      *ngIf="raceState !== 'start'"
+      class="referee-card__column referee-card__delete"
+      (click)="deleteReferee(referee)"
+    >
+      Удалить
+    </td>
   </tr>
 </table>
 
@@ -44,6 +51,10 @@
   (sendFormData)="handleEditRefereeFormData($event)"
   (closeModal)="handleEditRefereeCloseModal($event)"
   (mousedown)="toggleEditRefereeModal(null, false, $event, true)"
-  [fieldValues]="[refereeData.name, refereeData.login, refereeData.password].concat(refereeData.runners)"
+  [fieldValues]="
+    [refereeData.name, refereeData.login, refereeData.password].concat(
+      refereeData.runners
+    )
+  "
   buttonText="Сохранить"
 ></app-modal>

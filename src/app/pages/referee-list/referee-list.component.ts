@@ -4,6 +4,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import * as _ from 'lodash';
 
 import { RefereeService } from 'src/app/layouts/referee/referee.service';
+import { RunService } from 'src/app/pages/main/run.service';
 
 enum WizardTableHeader {
   NAME = 'Имя',
@@ -29,10 +30,12 @@ export class RefereeListComponent implements OnInit {
   ];
   public referees: any;
   public refereeData: any;
+  public raceState: string;
 
   constructor(
     private refereeService: RefereeService,
-    private db: AngularFireDatabase
+    private db: AngularFireDatabase,
+    private runService: RunService
   ) { }
 
   private getReferees() {
@@ -44,6 +47,9 @@ export class RefereeListComponent implements OnInit {
 
   ngOnInit() {
     this.getReferees();
+    this.runService.getSettings().subscribe((data: any) => {
+      this.raceState = data[0].state;
+    });
   }
 
   public toggleAddRefereeModal(state: boolean, e?: any, onOutside?: boolean) {

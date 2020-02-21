@@ -16,12 +16,14 @@
       {{ runner.club || "" }}
     </td>
     <td
+      *ngIf="raceState !== 'start'"
       class="runner-card__column runner-card__edit"
       (click)="toggleEditRunnerModal(runner, true)"
     >
       Редактировать
     </td>
     <td
+      *ngIf="raceState !== 'start'"
       class="runner-card__column runner-card__delete"
       (click)="deleteRunner(runner)"
     >
