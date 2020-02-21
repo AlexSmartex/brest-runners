@@ -34,7 +34,7 @@ export class AdminComponent extends BaseClass implements OnInit {
   }
 
   ngOnInit() {
-    this.runService.getSettings().subscribe((data) => {
+    this.runService.getSettings().subscribe((data: any) => {
       this.state = data[0].state;
 
       if (this.state === 'start') {

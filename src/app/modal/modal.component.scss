@@ -31,16 +31,19 @@
   padding: 0 12px;
   color: $color-grey;
   transition: all 0.2s;
-  margin-bottom: 10px;
+  margin-left: 10px;
 
   @include hidePlaceholderOnFocus;
 }
 
-.modal-label {
-  display: flex;
-  flex-direction: column;
-}
-
 .modal-button-submit {
   margin-bottom: 4px;
+}
+
+.modal-field-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 10px;
 }
