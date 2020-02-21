@@ -9,11 +9,11 @@ enum WizardTableHeader {
   REFEREE = 'Судья',
 }
 
-enum WizardFormFields {
-  NAME = 'Имя',
-  CITY = 'Город',
-  CLUB = 'Клуб',
-}
+// enum WizardFormFields {
+//   NAME = 'Имя',
+//   CITY = 'Город',
+//   CLUB = 'Клуб',
+// }
 
 @Component({
   selector: 'app-runner-list',
@@ -53,7 +53,7 @@ export class RunnerListComponent implements OnInit {
   public handleAddRunnerFormData(data: any) {
     const runnerData = {
       number: this.runners.length + 1,
-      name: data[1],
+      name: data[0],
       laps: 0,
       totalDistance: 0,
     };
@@ -90,7 +90,6 @@ export class RunnerListComponent implements OnInit {
   }
 
   public deleteRunner(runner) {
-    // TODO remove runner
     this.db.list('runners').remove(runner.key);
   }
 }
