@@ -3,7 +3,7 @@
   <a [routerLink]="['/login']" class="referee-logout-button">Выйти</a>
 </header>
 
-<h2 *ngIf="!runners?.length" class="referee-empty-list-placeholder">
+<h2 *ngIf="!filteredRunners?.length" class="referee-empty-list-placeholder">
   Нет текущих забегов
 </h2>
 

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
+
+import * as _ from 'lodash';
+
 import { RefereeService } from 'src/app/layouts/referee/referee.service';
 
 enum WizardTableHeader {
@@ -33,8 +36,9 @@ export class RefereeListComponent implements OnInit {
   ) { }
 
   private getReferees() {
-    return this.refereeService.getReferies().subscribe((data) => {
-      this.referees = data;
+    return this.refereeService.getReferies().subscribe((data: any) => {
+      const admin = data.find((item) => item.login === 'admin');
+      this.referees = _.without(data, admin);
     });
   }
 
@@ -51,6 +55,7 @@ export class RefereeListComponent implements OnInit {
   }
 
   public handleAddRefereeFormData(data: any) {
+    console.log(Object.values(data).slice(3).filter((runner: string) => runner.length !== 0))
     const refereeData = {
       name: data[0],
       login: data[1],

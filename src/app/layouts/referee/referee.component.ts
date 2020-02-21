@@ -33,6 +33,7 @@ export class RefereeComponent implements OnInit {
 
   private getUsers() {
     return this.refereeService.getReferies().subscribe((data) => {
+      console.log(data)
       this.referies = data;
       this.referee = this.referies.find((ref) => ref.key === this.query);
     });
@@ -46,6 +47,10 @@ export class RefereeComponent implements OnInit {
   }
 
   private filterRunners() {
+    if (!this.referee.runners) {
+      this.filteredRunners = [];
+      return;
+    }
     this.filteredRunners = this.runners.filter((runner) => this.referee.runners.includes(runner.number));
   }
 
