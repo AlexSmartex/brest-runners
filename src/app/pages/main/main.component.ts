@@ -33,7 +33,6 @@ export class MainComponent implements OnInit {
 
   @Output() public startRun: EventEmitter<boolean> = new EventEmitter();
   @Output() public stopRun: EventEmitter<boolean> = new EventEmitter();
-  @Output() public goResultPage: EventEmitter<boolean> = new EventEmitter();
 
   constructor(private runService: RunService) { }
 
