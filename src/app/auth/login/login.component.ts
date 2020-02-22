@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-    this.runService.getSettings().subscribe((data) => {
+    this.runService.getSettings().subscribe((data: any) => {
       const state = data[0].state;
 
       if (state !== 'prepare') {
