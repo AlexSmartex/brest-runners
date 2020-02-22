@@ -1,4 +1,6 @@
-<h2>Runners</h2>
+<h2>Brest Runners</h2>
+<h4 *ngIf="!isResults">Турнир не начался!</h4>
+<a routerLink="../results" *ngIf="isResults" class="results-link">Посмотреть результаты</a>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
   <input type="text" class="auth-form-field" formControlName="login" [placeholder]="loginPlaceholder" required>
   <input type="password" class="auth-form-field" formControlName="password" [placeholder]="passwordPlaceholder" required>

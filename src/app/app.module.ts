@@ -13,6 +13,7 @@ import { LoginComponent } from './auth/login/login.component';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
   ],
   imports: [
     BrowserModule,
+    SharedModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),

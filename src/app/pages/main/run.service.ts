@@ -10,7 +10,7 @@ import { map, take} from 'rxjs/operators';
 })
 export class RunService {
   public countDown$: Observable<number>;
-  public counter = 5;
+  public counter = 21600;
 
   constructor(private db: AngularFireDatabase) { }
 

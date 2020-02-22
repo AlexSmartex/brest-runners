@@ -7,37 +7,6 @@ import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
-// const MOCK_USERS = [
-//   {
-//     login : 'alexei',
-//     name : 'Гапеев Алексей',
-//     password : '123456',
-//     runners : [ '1', '2', '3', '4', '5', '6' ]
-//   },
-//   {
-//     login : 'pavel',
-//     name : 'Ракецкий Павел',
-//     password : '123456',
-//     runners : [ '7', '8', '9', '10', '11', '12' ]
-//   },
-//   {
-//     login : 'andrei',
-//     name : 'Яковинич Андрей',
-//     password : '123456',
-//     runners : [ '13', '14', '15', '16', '17' ]
-//   },
-//   {
-//     login : 'alexeiJ',
-//     name : 'Янущик Алексей',
-//     password : '123456',
-//     runners : [ '18', '19', '20', '21', '22' ]
-//   },
-//   {
-//     login: 'admin',
-//     password: 'admin',
-//   }
-// ];
-
 @Injectable({
   providedIn: 'root'
 })

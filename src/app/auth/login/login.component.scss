@@ -22,6 +22,11 @@ h2 {
   margin-top: 140px;
 }
 
+h4 {
+  margin-top: 10px;
+  font-weight: normal;
+}
+
 form {
   margin-top: auto;
   margin-bottom: 160px;
@@ -60,5 +65,14 @@ form {
 
   &:hover {
     background-color: $color-primary-select;
+  }
+}
+
+.results-link {
+  text-decoration: underline;
+  margin-top: 10px;
+
+  &:hover {
+    text-decoration: none;
   }
 }

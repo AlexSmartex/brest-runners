@@ -35,13 +35,12 @@ export class ResultsComponent implements OnInit {
     this.getRunners();
     this.runService.getSettings().subscribe((data: any) => {
       this.raceState = data[0].state;
-      console.log(this.raceState)
     });
   }
 
   private getRunners() {
     return this.refereeService.getRunners().subscribe((data) => {
-      this.runners = _.sortBy(data, ['laps', 'totalDistance']).reverse();
+      this.runners = _.sortBy(data, ['totalDistance', 'laps']).reverse();
 
       this.runners = _.forEach(this.runners, (runner) => {
         runner.distance = `${runner.totalDistance}m`;
@@ -53,7 +52,7 @@ export class ResultsComponent implements OnInit {
         if (!runner.lapsTime) {
           return;
         }
-        const differenceArray = runner.lapsTime.map((lapTime) => lapTime.difference)
+        const differenceArray = runner.lapsTime.map((lapTime) => lapTime.difference);
         const average = differenceArray.reduce((total, amount, index, array) => {
           total += amount;
           if (index === array.length - 1) {

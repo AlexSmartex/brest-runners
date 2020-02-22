@@ -6,7 +6,8 @@
       <button
         (click)="handleAddLaps()"
         [disabled]="disableAddButton"
-        class="referee-runner-card__button">
+        [class.referee-runner-card__button--inactive]="disableAddButton"
+        class="referee-runner-card__button referee-runner-card__button_add">
           <span class="cross-icon">+</span>
         </button>
     </div>
@@ -19,7 +20,6 @@
     <input [disabled]="disableAddDistance" class="last-distance" type="number" [(ngModel)]="data.additionalDistance">
     <button
       (click)="onAddLastLapDistance()"
-      [disabled]="disableAddButton"
       class="referee-runner-card__button referee-runner-card__button_add"
       [class.referee-runner-card__button--inactive]="disableAddDistance">
         <span *ngIf="!disableAddDistance">Добавить</span>

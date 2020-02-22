@@ -61,7 +61,6 @@ export class RefereeListComponent implements OnInit {
   }
 
   public handleAddRefereeFormData(data: any) {
-    console.log(Object.values(data).slice(3).filter((runner: string) => runner.length !== 0))
     const refereeData = {
       name: data[0],
       login: data[1],

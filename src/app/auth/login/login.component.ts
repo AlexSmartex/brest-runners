@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 
-import { AngularFireDatabase } from '@angular/fire/database';
 import { LoginService } from './login.service';
+import { RunService } from 'src/app/pages/main/run.service';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   public loginPlaceholder = 'Логин';
   public passwordPlaceholder = 'Пароль';
   public submitValue = 'Войти';
+  public isResults: boolean;
 
   public loginForm = this.fb.group({
     login: ['', Validators.required],
@@ -23,9 +24,18 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router,
               private fb: FormBuilder,
+              private runService: RunService,
               private loginService: LoginService) { }
 
   ngOnInit() {
+
+    this.runService.getSettings().subscribe((data) => {
+      const state = data[0].state;
+
+      if (state !== 'prepare') {
+        this.isResults = true;
+      }
+    });
   }
 
   public handleClick() {

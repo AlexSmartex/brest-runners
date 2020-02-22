@@ -33,7 +33,6 @@ export class RefereeComponent implements OnInit {
 
   private getUsers() {
     return this.refereeService.getReferies().subscribe((data) => {
-      console.log(data)
       this.referies = data;
       this.referee = this.referies.find((ref) => ref.key === this.query);
     });

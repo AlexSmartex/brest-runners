@@ -37,6 +37,12 @@ export class RefereesRunnerCardComponent implements OnInit {
   ngOnInit() {
     this.refereeService.getSettings().subscribe((settings: any) => {
 
+      if (settings[0].state === 'prepare') {
+        this.disableAddButton = true;
+      } else {
+        this.disableAddButton = false;
+      }
+
       if (settings[0].state === 'finish') {
         this.isFinish = true;
         return;
@@ -46,10 +52,11 @@ export class RefereesRunnerCardComponent implements OnInit {
   }
 
   public onAddLastLapDistance() {
-    if (this.disableAddDistance) return;
+    if (this.disableAddDistance) {
+      return;
+    }
     this.disableAddDistance = true;
     this.data.totalDistance += +this.data.additionalDistance;
-    console.log(this.data)
     this.setLaps.emit(this.data);
   }
 
